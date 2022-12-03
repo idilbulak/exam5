@@ -41,27 +41,24 @@ void Warlock::introduce(void)const{
 
 void Warlock::learnSpell(ASpell *aspell) {
     for (std::vector<ASpell*>::iterator spell = _spells.begin();spell != _spells.end();spell++)
-		if ((*(*spell)).getName() == (*aspell).getName())
+		if ((*spell)->getName() == aspell->getName())
 			return ;
-    if (aspell)
-    	_spells.push_back(aspell->clone());
+    _spells.push_back(aspell);
 }
 
 void Warlock::forgetSpell(std::string name) {
     for (std::vector<ASpell*>::iterator spell = _spells.begin();spell != _spells.end();spell++) {
-		if ((*(*spell)).getName() == name) {
-            delete (*spell);
-            spell = _spells.erase(spell);
+		if ((*spell)->getName() == name) {
+            _spells.erase(spell);
+            return ;
         }
-        else
-            spell++;
     }
 }
 
 void Warlock::launchSpell(std::string name, ATarget& atarget) {
     for (std::vector<ASpell*>::iterator spell = _spells.begin();spell != _spells.end();spell++)
-		if ((*(*spell)).getName() == name) {
-            (*(*spell)).launch(atarget);
+		if ((*spell)->getName() == name) {
+            atarget.getHitBySpell(**spell);
             return ;
         }
 }
