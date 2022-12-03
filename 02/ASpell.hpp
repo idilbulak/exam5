@@ -18,7 +18,7 @@ class ASpell {
         std::string getName(void)const;
         std::string getEffects(void)const;
 
-        virtual Aspell* clone(void) const = 0;
+        virtual ASpell* clone(void) const = 0;
         void launch(const ATarget &atarget)const;
 
     private:

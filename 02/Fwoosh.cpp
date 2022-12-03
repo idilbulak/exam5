@@ -1,14 +1,14 @@
 #include "Fwoosh.hpp"
 
-Fwoosh::Fwoosh(void)
-    :_name("fwoosh"), _effects("fwooshed") { 
+Fwoosh::Fwoosh(void) : ASpell("Fwoosh", "fwooshed"){
 }
 
-Fwoosh::Fwoosh(const Fwoosh& fwoosh){
-    *this = fwoosh;
+Fwoosh::Fwoosh(const Fwoosh& fwoosh) : ASpell(fwoosh) {
 }
 
 Fwoosh& Fwoosh::operator=(const Fwoosh& fwoosh) {
+    if (this != &fwoosh)
+        *this = fwoosh;
     return *this;
 }
 

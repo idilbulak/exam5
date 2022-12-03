@@ -1,15 +1,15 @@
 #include "Dummy.hpp"
 
-Dummy::Dummy(void)
-    :_type("Target Practice Dummy") { 
+Dummy::Dummy(void) :ATarget("Target Practice Dummy") { 
 }
 
 Dummy::Dummy(const Dummy& dummy){
-    *this = Dummy;
+    *this = dummy;
 }
 
 Dummy& Dummy::operator=(const Dummy& dummy) {
-    this->_type = Dummy.getType();
+    if (this != &dummy)
+        *this = dummy;
     return *this;
 }
 

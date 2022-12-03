@@ -2,6 +2,13 @@
 # define WARLOCK_HPP
 
 #include <iostream>
+#include <vector>
+#include <iterator>
+#include "ASpell.hpp"
+#include "ATarget.hpp"
+
+class ASpell;
+class ATarget;
 
 class Warlock {
 
@@ -17,14 +24,15 @@ class Warlock {
 
         void setTitle(const std::string& title);
         void introduce(void)const;
+
         void learnSpell(ASpell *aspell);
         void forgetSpell(std::string name);
-        void launcSpell(std::string name, ATarget& atarget);
+        void launchSpell(std::string name, ATarget& atarget);
 
     private:
         std::string _name;
         std::string _title;
-        // ????? _spells;
+        std::vector<ASpell *> _spells;
 };
 
 #endif
